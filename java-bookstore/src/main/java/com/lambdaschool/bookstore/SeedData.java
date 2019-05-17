@@ -1,10 +1,8 @@
 package com.lambdaschool.bookstore;
 
-import com.lambdaschool.bookstore.model.Author;
-import com.lambdaschool.bookstore.model.Role;
-import com.lambdaschool.bookstore.model.User;
-import com.lambdaschool.bookstore.model.UserRoles;
+import com.lambdaschool.bookstore.model.*;
 import com.lambdaschool.bookstore.repository.AuthorRepository;
+import com.lambdaschool.bookstore.repository.BookRepository;
 import com.lambdaschool.bookstore.repository.RoleRepository;
 import com.lambdaschool.bookstore.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -20,11 +18,13 @@ public class SeedData implements CommandLineRunner
     RoleRepository rolerepos;
     UserRepository userrepos;
     AuthorRepository authorRepos;
+    BookRepository bookRepos;
 
-    public SeedData(RoleRepository rolerepos, UserRepository userrepos, AuthorRepository authorRepos) {
+    public SeedData(RoleRepository rolerepos, UserRepository userrepos, AuthorRepository authorRepos, BookRepository bookRepos) {
         this.rolerepos = rolerepos;
         this.userrepos = userrepos;
         this.authorRepos = authorRepos;
+        this.bookRepos = bookRepos;
     }
 
     @Override
@@ -51,11 +51,8 @@ public class SeedData implements CommandLineRunner
 
 
         User u1 = new User("gw", "admin", users);
-
         User u2 = new User("admin", "password", admins);
-
         User u3 = new User("cinnamon", "123456", data);
-
         userrepos.save(u1);
         userrepos.save(u2);
         userrepos.save(u3);
@@ -68,5 +65,12 @@ public class SeedData implements CommandLineRunner
         authorRepos.save(a2);
         authorRepos.save(a3);
 
+
+        Book b1 = new Book("GoodBook","13214", 1);
+        Book b2 = new Book("BadBook", "6969", 2);
+        Book b3 = new Book("Don't Read This Book", "12354", 234);
+        bookRepos.save(b1);
+        bookRepos.save(b2);
+        bookRepos.save(b3);
     }
 }

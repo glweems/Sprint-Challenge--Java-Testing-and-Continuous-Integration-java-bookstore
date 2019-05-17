@@ -1,5 +1,9 @@
 package com.lambdaschool.bookstore.service;
 
-public interface BookService
-{
+import com.lambdaschool.bookstore.model.Book;
+
+import java.util.List;
+
+public interface BookService {
+    List<Book> findAll();
 }
